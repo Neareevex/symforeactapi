@@ -20,12 +20,7 @@ class Publication
     /**
      * @ORM\Column(type="text", nullable=true)
      */
-    private $Context;
-
-    /**
-     * @ORM\Column(type="datetime_immutable")
-     */
-    private $createdAt;
+    private $Content;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -43,34 +38,28 @@ class Publication
      */
     private $type;
 
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $createdAt;
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getContext(): ?string
+    public function getContent(): ?string
     {
-        return $this->Context;
+        return $this->Content;
     }
 
-    public function setContext(?string $Context): self
+    public function setContent(?string $Content): self
     {
-        $this->Context = $Context;
+        $this->Content = $Content;
 
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeImmutable
-    {
-        return $this->createdAt;
-    }
-
-    public function setCreatedAt(\DateTimeImmutable $createdAt): self
-    {
-        $this->createdAt = $createdAt;
-
-        return $this;
-    }
 
     public function getTitle(): ?string
     {
@@ -104,6 +93,18 @@ class Publication
     public function setType(?Type $type): self
     {
         $this->type = $type;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
 
         return $this;
     }
