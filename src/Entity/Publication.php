@@ -2,8 +2,9 @@
 
 namespace App\Entity;
 
-use App\Repository\PublicationRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\PublicationRepository;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=PublicationRepository::class)
@@ -14,32 +15,38 @@ class Publication
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"read", "write"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Groups({"read", "write"})
      */
     private $Content;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"read", "write"})
      */
     private $title;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="publications")
      * @ORM\JoinColumn(nullable=false)
+     * 
      */
     private $writtenBy;
 
     /**
      * @ORM\ManyToOne(targetEntity=Type::class, inversedBy="publications")
+     * @Groups({"read", "write"})
      */
     private $type;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"read", "write"})
      */
     private $createdAt;
 

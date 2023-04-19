@@ -5,3 +5,7 @@ controllers:
 kernel:
     resource: ../../src/Kernel.php
     type: annotation
+
+# nelmio_cors:
+#     resource: "@NelmioCorsBundle/Resources/config/routes.yaml"
+#     prefix: /api
